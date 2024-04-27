@@ -4,27 +4,30 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Bootanimation
+TARGET_BOOT_ANIMATION_RES := 1280
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/voltage/config/common_full_phone.mk)
 
 # Inherit from Mi439 device
 $(call inherit-product, device/xiaomi/Mi439/device.mk)
 
 # Overlays
 PRODUCT_PACKAGES += \
-    xiaomi_pine_overlay_lineage \
-    xiaomi_olive_overlay_lineage
+    xiaomi_pine_overlay_voltage \
+    xiaomi_olive_overlay_voltage
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-voltage
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := Mi439
-PRODUCT_NAME := lineage_Mi439
+PRODUCT_NAME := voltage_Mi439
 BOARD_VENDOR := Xiaomi
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := SDM439
